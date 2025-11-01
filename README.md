@@ -1,7 +1,7 @@
 # 🏆 ONG Mãos Solidárias - Entrega IV
 
 
-[![Acessar o Site Publicado](https://img.shields.io/badge/SITE%20FINAL%20NO%20AR-Vercel-000000?style=for-the-badge&logo=vercel)](https://ong-maos-solidarias-entrega-iii.vercel.app/) 
+[![Acessar o Site Publicado](https://img.shields.io/badge/SITE%20FINAL%20NO%20AR-Vercel-000000?style=for-the-badge&logo=vercel)](https://ong-maos-solidarias-entrega-iv.vercel.app/) 
 
 ---
 
