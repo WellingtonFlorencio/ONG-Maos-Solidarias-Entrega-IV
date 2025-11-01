@@ -51,5 +51,5 @@ Desenvolvimento de uma plataforma web completa para o terceiro setor, aplicando 
 
 **Wellington Florencio**
 
-* [Seu LinkedIn (Opcional)](COLE SEU LINKEDIN AQUI)
+
 * [Seu GitHub](https://github.com/WellingtonFlorencio)
