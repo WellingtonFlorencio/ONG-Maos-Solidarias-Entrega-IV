@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | ONG Mãos Solidárias</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <header>
+  <div class="container header-inner">
+    <a href="index.html" class="logo" aria-label="Ir para o início">
+      <img src="assets/img/logo.jpg" alt="Logo da ONG Mãos Solidárias">
+    </a>
+
+    <!-- Botão hambúrguer com ARIA -->
+    <button id="menu-hamburguer" class="menu-hamburguer" aria-controls="nav-menu" aria-expanded="false" aria-label="Abrir menu principal">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navegação principal -->
+    <nav id="nav-menu" class="nav" role="navigation" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+
+        <!-- Item com submenu (dropdown) -->
+        <li class="nav-item dropdown" aria-haspopup="true">
+          <a href="projetos.html" class="drop-link" aria-expanded="false">Projetos</a>
+          <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Abrir submenu Projetos">▾</button>
+          <ul class="submenu" role="menu" aria-label="Submenu projetos">
+            <li role="none"><a role="menuitem" href="projetos.html#educacao">Educação</a></li>
+            <li role="none"><a role="menuitem" href="projetos.html#saude">Saúde</a></li>
+            <li role="none"><a role="menuitem" href="projetos.html#digital">Inclusão Digital</a></li>
+          </ul>
+        </li>
+
+        <li><a href="cadastro.html">Cadastre-se</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main>
+        <section>
+            <div class="container">
+                <h1>Nossos Projetos de Transformação</h1>
+                <h2>Projetos Atuais e Concluídos</h2>
+                
+                <div class="project-grid">
+
+                    <article class="project-card">
+                        <h3>Educação Verde</h3>
+                        <p class="tag">Educação e Meio Ambiente</p>
+                        <img src="assets/img/projeto-educacao.jpeg" alt="Crianças plantando mudas">
+                        <p>Focamos em levar aulas de sustentabilidade para 500 crianças em escolas públicas. Impacto: <strong>+1000 árvores plantadas</strong>.</p>
+                        <a href="#" class="button">Ver Detalhes</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Saúde Comunitária</h3>
+                        <p class="tag">Saúde e Bem-estar</p>
+                        <img src="assets/img/projeto-saude.jpeg" alt="Voluntários em atendimento médico">
+                        <p>Oferecemos consultas e orientações médicas básicas. Impacto: <strong>Mais de 2.000 atendimentos</strong> em um ano.</p>
+                        <a href="#" class="button">Ver Detalhes</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Inclusão Digital</h3>
+                        <p class="tag">Tecnologia e Cursos</p>
+                        <img src="assets/img/projeto-digital.jpg" alt="Pessoa aprendendo a usar um computador">
+                        <p>Cursos de informática para jovens e adultos, aumentando suas chances no mercado. Impacto: <strong>70% de recolocação</strong>.</p>
+                        <a href="#" class="button">Ver Detalhes</a>
+                    </article>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2>Seja um Voluntário</h2>
+                <p>Sua paixão e suas habilidades são o que movem a Mãos Solidárias. Descubra oportunidades e venha fazer a diferença!</p>
+                <a href="cadastro.html" class="button">Candidatar-se para Voluntariado</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2>Apoie Nossas Campanhas</h2>
+                <p>Contribua com a sustentabilidade de nossos projetos. Sua doação é 100% rastreável e transparente.</p>
+                <a href="#" class="button button-secondary">Realizar Doação Online</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ONG Mãos Solidárias. <a href="#">Transparência</a>.</p>
+        </div>
+    </footer>
+    
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+/* ------------------------------------------- */
+/* 1. SISTEMA DE DESIGN E RESET BÁSICO         */
+/* ------------------------------------------- */
+:root {
+    /* -- PALETA DE CORES -- */
+    --cor-primaria: #4CAF50;
+    --cor-primaria-escura: #388E3C;
+    --cor-secundaria: #FF9800;
+    --cor-secundaria-escura: #F57C00;
+    --cor-fundo: #F5F5FF;
+    --cor-superficie: #FFFFFF;
+    --cor-texto-principal: #333333;
+    --cor-texto-claro: #FFFFFF;
+    --cor-primaria-rgb: 76, 175, 80;
+
+    /* -- TIPOGRAFIA -- */
+    --fonte-principal: 'Arial', sans-serif;
+    --fonte-tamanho-xxg: 2.8rem;
+    --fonte-tamanho-xg: 2rem;
+    --fonte-tamanho-g: 1.5rem;
+    --fonte-tamanho-m: 1rem;
+    --fonte-tamanho-p: 0.875rem;
+
+    /* -- ESPAÇAMENTO -- */
+    --espacamento-xs: 0.5rem;
+    --espacamento-s: 1rem;
+    --espacamento-m: 1.5rem;
+    --espacamento-l: 2rem;
+    --espacamento-xl: 3rem;
+    --espacamento-xxl: 4rem;
+
+    /* -- OUTROS -- */
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --raio-borda: 8px;
+    --transicao-padrao: all 0.3s ease;
+}
+
+/* --- RESET BÁSICO --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--fonte-principal);
+    line-height: 1.6;
+    color: var(--cor-texto-principal);
+    background-color: var(--cor-fundo);
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* ------------------------------------------- */
+/* 2. TIPOGRAFIA E ELEMENTOS GERAIS            */
+/* ------------------------------------------- */
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: var(--espacamento-s);
+}
+h1 { font-size: var(--fonte-tamanho-xg); }
+h2 {
+    font-size: var(--fonte-tamanho-g);
+    border-bottom: 3px solid var(--cor-secundaria);
+    padding-bottom: var(--espacamento-xs);
+    margin-top: var(--espacamento-l);
+}
+h3 { font-size: 1.2rem; }
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: var(--transicao-padrao);
+}
+a:hover {
+    color: var(--cor-secundaria);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--raio-borda);
+    display: block;
+    margin: 0;
+}
+
+/* ------------------------------------------- */
+/* 3. HEADER E NAVEGAÇÃO (COM MENU RESPONSIVO) */
+/* ------------------------------------------- */
+header {
+    grid-area: header;
+    background-color: var(--cor-superficie);
+    box-shadow: var(--sombra);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--espacamento-s);
+    padding-bottom: var(--espacamento-s);
+}
+
+.logo img {
+  height: 80px !important;
+  width: auto !important;
+}
+
+
+.menu-hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+}
+.menu-hamburguer span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--cor-texto-principal);
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+.menu-hamburguer.ativo span:nth-child(1) { transform: rotate(45deg); }
+.menu-hamburguer.ativo span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+.menu-hamburguer.ativo span:nth-child(3) { transform: rotate(-45deg); }
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--espacamento-m);
+}
+nav a {
+    color: var(--cor-texto-principal);
+    padding: var(--espacamento-s) var(--espacamento-m);
+    display: block;
+    font-weight: bold;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+nav a:hover {
+    color: var(--cor-texto-claro);
+    background-color: var(--cor-secundaria);
+}
+
+/* ------------------------------------------- */
+/* 4. LAYOUT PRINCIPAL E SEÇÕES                */
+/* ------------------------------------------- */
+main {
+    grid-area: main;
+    width: 100%;
+    padding-top: calc(var(--espacamento-xxl) + 2.5rem); /* Ajustado para o header maior */
+}
+section {
+    padding-top: var(--espacamento-l);
+    padding-bottom: var(--espacamento-l);
+    margin-bottom: var(--espacamento-l);
+}
+section:nth-child(even) {
+    background-color: var(--cor-superficie);
+}
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--espacamento-m);
+    padding-right: var(--espacamento-m);
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espacamento-m);
+    align-items: center;
+}
+.col-1 { grid-column: span 1; } .col-2 { grid-column: span 2; } .col-3 { grid-column: span 3; } .col-4 { grid-column: span 4; } .col-5 { grid-column: span 5; } .col-6 { grid-column: span 6; } .col-7 { grid-column: span 7; } .col-8 { grid-column: span 8; } .col-9 { grid-column: span 9; } .col-10 { grid-column: span 10; } .col-11 { grid-column: span 11; } .col-12 { grid-column: span 12; }
+.hero .grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ------------------------------------------- */
+/* 5. FOOTER (Rodapé)                          */
+/* ------------------------------------------- */
+footer {
+    grid-area: footer;
+    background-color: var(--cor-texto-principal);
+    color: var(--cor-texto-claro);
+    text-align: center;
+    padding: var(--espacamento-l);
+}
+footer a {
+    color: var(--cor-primaria);
+}
+
+/* ------------------------------------------- */
+/* 6. COMPONENTES: PROJETOS                    */
+/* ------------------------------------------- */
+.project-grid {
+    display: grid;
+    gap: var(--espacamento-m);
+    grid-template-columns: 1fr;
+}
+.project-card {
+    background-color: var(--cor-superficie);
+    border: 1px solid #DDD;
+    padding: var(--espacamento-m);
+    border-radius: var(--raio-borda);
+    transition: var(--transicao-padrao);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacamento-s);
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 24px rgba(var(--cor-primaria-rgb), 0.3);
+}
+.project-card h3 {
+    color: var(--cor-primaria);
+}
+.tag {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    padding: var(--espacamento-xs) var(--espacamento-m);
+    border-radius: var(--raio-borda);
+    font-size: var(--fonte-tamanho-p);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ------------------------------------------- */
+/* 7. COMPONENTES: FORMULÁRIO                  */
+/* ------------------------------------------- */
+form { display: flex; flex-direction: column; }
+fieldset { border: 1px solid #CCC; border-radius: var(--raio-borda); padding: var(--espacamento-m); margin-bottom: var(--espacamento-m); }
+legend { padding: 0 var(--espacamento-xs); font-weight: bold; color: var(--cor-primaria); font-size: 1.1em; }
+label { display: block; margin-top: var(--espacamento-s); font-weight: bold; }
+input[type="text"], input[type="email"], input[type="date"], input[type="tel"], select { width: 100%; padding: var(--espacamento-s); margin-top: var(--espacamento-xs); margin-bottom: var(--espacamento-s); border: 1px solid #CCC; border-radius: 4px; font-size: var(--fonte-tamanho-m); }
+
+/* ------------------------------------------- */
+/* 8. COMPONENTES: BOTÕES                      */
+/* ------------------------------------------- */
+.button, button[type="submit"] { display: inline-block; padding: var(--espacamento-s) var(--espacamento-l); margin-top: var(--espacamento-s); border-radius: 4px; font-weight: bold; text-align: center; transition: var(--transicao-padrao); border: none; cursor: pointer; font-size: var(--fonte-tamanho-m); }
+.button, .button-primary, button[type="submit"] {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.button:hover, .button-primary:hover, button[type="submit"]:hover {
+    background-color: var(--cor-primaria-escura);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+.button:active, .button-primary:active, button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.button-secondary {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro) !important;
+}
+.button-secondary:hover {
+    background-color: var(--cor-secundaria-escura);
+}
+
+/* ------------------------------------------- */
+/* 9+. RESPONSIVIDADE AVANÇADA E DROPDOWN      */
+/* ------------------------------------------- */
+
+/* Ajustes base para submenu - desktop */
+nav { position: relative; }
+.nav ul { display:flex; gap: var(--espacamento-m); align-items:center; }
+.nav .dropdown { position: relative; }
+.nav .dropdown .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--cor-superficie);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  padding: var(--espacamento-s) 0;
+  z-index: 1500;
+}
+.nav .dropdown .submenu li { list-style: none; }
+.nav .dropdown .submenu li a {
+  display:block;
+  padding: 0.6rem 1rem;
+  color: var(--cor-texto-principal);
+  font-weight: 600;
+}
+.nav .dropdown .submenu li a:hover, .nav .dropdown .submenu li a:focus {
+  background: rgba(var(--cor-primaria-rgb), 0.06);
+  color: var(--cor-primaria);
+}
+
+/* Mostrar submenu ao passar o mouse (desktop) */
+@media (hover: hover) and (min-width: 992px) {
+  .nav .dropdown:hover .submenu { display:block; }
+  .submenu-toggle { display:none; } 
+}
+
+/* Estilos do botão de toggle do submenu (mobile) */
+.submenu-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: var(--cor-texto-principal);
+  cursor: pointer;
+  padding: 0 var(--espacamento-xs);
+  display: inline-flex;
+  align-items: center;
+}
+.submenu-toggle[aria-expanded="true"] { transform: rotate(180deg); }
+
+/* Responsividade - Breakpoints definidos */
+/* widescreen > 1200px (desktop grande) */
+@media (min-width: 1201px) {
+  .container { max-width: 1400px; }
+  h1 { font-size: var(--fonte-tamanho-xxg); }
+}
+
+/* desktop médio até 1200px (notebooks grandes) */
+@media (max-width: 1200px) and (min-width: 993px) {
+  .container { max-width: 1100px; }
+  .nav ul { gap: var(--espacamento-m); }
+}
+
+/* tablets / desktop pequeno até 992px */
+@media (max-width: 992px) and (min-width: 769px) {
+  .grid { gap: var(--espacamento-s); }
+  .hero .grid { grid-template-columns: repeat(12, 1fr); }
+  .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav ul { gap: var(--espacamento-s); }
+}
+
+/* mobile landscape até 768px */
+@media (max-width: 768px) {
+  .menu-hamburguer { display: flex; }
+  .nav { position: fixed; top: 0; right: -100%; width: 75%; max-width: 360px; height: 100vh; background-color: var(--cor-superficie); box-shadow: -5px 0 15px rgba(0,0,0,0.12); transition: right 0.35s ease-in-out; padding-top: calc(var(--espacamento-xxl) + 1rem); }
+  .nav.ativo { right: 0; }
+  .nav ul { flex-direction: column; justify-content: flex-start; align-items: stretch; gap: var(--espacamento-s); padding: 0; }
+  .nav .dropdown .submenu { position: static; box-shadow: none; padding-left: var(--espacamento-m); display: none; }
+  .nav .dropdown .submenu[aria-hidden="false"], .nav .dropdown .submenu.ativo { display:block; }
+  .project-grid { grid-template-columns: 1fr; }
+}
+
+/* mobile portrait menor (até 576px) */
+@media (max-width: 576px) {
+  .logo img { height: 60px; }
+  header .container { padding-left: var(--espacamento-s); padding-right: var(--espacamento-s); }
+  .menu-hamburguer { width: 28px; height: 22px; }
+  .project-grid { gap: var(--espacamento-s); }
+  .hero .grid { grid-template-columns: 1fr; }
+}
+
+/* validação visual */
+input:valid, select:valid, textarea:valid {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(var(--cor-primaria-rgb), 0.06);
+}
+input:invalid, select:invalid, textarea:invalid {
+  border-color: #E53935;
+  box-shadow: 0 0 0 3px rgba(229,57,53,0.06);
+}
+
+/* estilos para estados de foco acessíveis */
+input:focus, select:focus, textarea:focus, .button:focus, button:focus {
+  outline: 3px solid rgba(var(--cor-primaria-rgb), 0.12);
+  outline-offset: 2px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* botões disabled */
+button[disabled], .button[disabled], input[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+main { padding-top: calc(var(--espacamento-xxl) + 3.5rem); }
+
+/* ====== MODAL DE SUCESSO ====== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+.modal.ativo {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-conteudo {
+  background: #fff;
+  color: #333;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Botão de formulário para melhor aparência */
+form button {
+  margin-top: 10px;
+  padding: 10px 25px;
+  border: none;
+  background-color: #008c4a;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+form button:hover {
+  background-color: #006d3a;
+}
+/* ===== ACESSIBILIDADE: FOCOS VISÍVEIS ===== */
+.usuario-teclado a:focus,
+.usuario-teclado button:focus,
+.usuario-teclado input:focus,
+.usuario-teclado select:focus {
+  outline: 3px solid var(--cor-secundaria);
+  outline-offset: 3px;
+}
+/* ===== ALTO CONTRASTE ===== */
+body.alto-contraste {
+  background-color: #000;
+  color: #fff;
+}
+body.alto-contraste a,
+body.alto-contraste button {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+body.alto-contraste header,
+body.alto-contraste footer {
+  background-color: #111;
+}
